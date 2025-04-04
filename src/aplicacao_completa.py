@@ -3,9 +3,23 @@ import streamlit as st
 from validador import User
 from pydantic import ValidationError
 
+
+# Lista de Colunas Esperadas
+colunas_esperadas = {
+    "Organizador", "Ano_Mes", "Dia_da_Semana", "Tipo_Dia", "Objetivo",
+    "Date", "AdSet_name", "Amount_spent", "Link_clicks", "Impressions",
+    "Conversions", "Segmentação", "Tipo_de_Anúncio", "Fase"
+}
+
+
 def validador_dados(df):
     erros = []
     dados_validados = []
+
+    # Verifica se todas as colunas esperadas estão presentes no DataFrame
+    colunas_faltando = colunas_esperadas - set(df.columns)
+    if colunas_faltando:
+        return [], [f"Erro: A sequintes colunas estão faltando: {', '.join(colunas_faltando)}"]
 
     for index, row in df.iterrows():
         try:
