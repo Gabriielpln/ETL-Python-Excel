@@ -1,23 +1,37 @@
-🧪 Projeto ETL com Validação de Dados e Dashboard Interativo
-Este projeto implementa um processo ETL com foco em análise de dados de campanhas de marketing. Utilizando Python, Pandas, Pydantic, Streamlit e YData Profiling, construí uma solução completa que valida, analisa e visualiza dados a partir de arquivos CSV.
+# 🧪 Projeto ETL com Validação de Dados e Dashboard Interativo
 
-🚀 Tecnologias Utilizadas
-Python 3
+Este projeto implementa um processo ETL com foco em análise de dados de campanhas de marketing. São utilizados **Python**, **Pandas**, **Pydantic**, **Streamlit** e **YData Profiling** para construir uma solução completa que valida, analisa e visualiza dados a partir de arquivos CSV.
 
-Pandas – Manipulação e análise de dados
+---
 
-Pydantic – Validação de dados com modelos
+## 🚀 Tecnologias Utilizadas
 
-YData Profiling (ex-Pandas Profiling) – Geração de relatório exploratório automático
+- **Python 3**
+- **Pandas** – manipulação de dados
+- **Pydantic** – validação de dados com modelos
+- **YData Profiling** – geração de relatório exploratório dos dados
+- **Streamlit** – criação de dashboards e interfaces web
+- **Plotly Express** – gráficos interativos
 
-Streamlit – Criação de dashboards e interfaces interativas
+---
 
-Plotly Express – Visualizações interativas
+## 🧱 Estrutura do Projeto
 
-🧱 Estrutura do Projeto
+| Arquivo                 | Descrição                                                                 |
+|------------------------|---------------------------------------------------------------------------|
+| `main.py`              | Geração de relatório exploratório (`output.html`) com YData Profiling     |
+| `app_dashboard.py`     | Dashboard interativo para análise de KPIs com Streamlit                   |
+| `validador.py`         | Definição do modelo `planilha_vendas` com Pydantic para validação de dados|
+| `aplicacao_completa.py`| Validação de CSVs via Streamlit com feedback e opção de download          |
 
-Arquivo	                    Descrição
-main.py	                    Gera relatório exploratório (output.html) com YData Profiling
-app_dashboard.py	        Dashboard com KPIs e gráficos interativos via Streamlit
-validador.py	            Modelos com Pydantic para validação de dados (planilha_vendas)
-aplicacao_completa.py	    Interface completa para upload, validação e exportação de dados válidos
+---
+
+## ⚙️ Configuração do Ambiente
+
+1. Crie um ambiente virtual (ex: no VSCode, `Ctrl + Shift + P` > “Python: Create Environment”)
+2. Certifique-se de estar usando o terminal `cmd`
+3. Instale as dependências:
+
+```bash
+pip install pandas streamlit ydata-profiling pydantic plotly
+
