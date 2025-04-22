@@ -1,7 +1,7 @@
-from pydantic import BaseModel, Field 
+from pydantic import BaseModel, Field, root_validator, ValidationError
 from typing import Optional
 
-class User(BaseModel):
+class planilha_vendas(BaseModel):
     Organizador: int = Field(..., description="Identificador do Organizador")
     Ano_Mes: str = Field(..., description="Ano e mês no formato")
     Dia_da_Semana: str = Field(..., description="Dia da semana")
@@ -13,6 +13,9 @@ class User(BaseModel):
     Link_clicks: Optional[float] = Field(None, description="Número de cliques no link", nullable=True)
     Impressions: Optional[float] = Field(0, description="Número de impressões do anúncio", nullable=True)
     Conversions: Optional[float] = Field(None, description="Número de conversões", nullable=True)
-    Segmentação: Optional[str] = Field(None, description="Segmentação usada")
+    Segmentação: str = Field(None, description="Segmentação usada")
     Tipo_de_Anúncio: str = Field(..., description="Tipo de anúncio")
     Fase: str = Field(..., description="Fase do funil de vendas")
+
+    class Config:
+        validate_default: True # Garante que os valores padrão sejam validados automaticamente

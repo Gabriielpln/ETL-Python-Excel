@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from validador import User
+from validador import planilha_vendas
 from pydantic import ValidationError
 
 
@@ -27,7 +27,7 @@ def validador_dados(df):
             dados = row.to_dict()
 
             #Valida os dados usando o modelo User
-            usuario_valido = User(**dados)
+            usuario_valido = planilha_vendas(**dados)
             dados_validados.append(usuario_valido)
 
         except ValidationError as e:
