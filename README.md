@@ -1,7 +1,13 @@
 
 # 🧪 Projeto ETL com Validação de Dados e Dashboard Interativo
 
-Este projeto implementa um processo ETL com foco em análise de dados de campanhas de marketing. São utilizados `Python`, `Pandas`, `Pydantic`, `Streamlit` e `YData Profiling` para construir uma solução completa que **valida**, **analisa** e **visualiza** dados a partir de arquivos CSV.
+Este projeto implementa um processo ETL com foco em análise de dados a partir de planilhas Excel (CSV). São utilizados `Python`, `Pandas`, `Pydantic`, `Streamlit` e `YData Profiling` para construir uma solução completa que **valida**, **analisa** e **visualiza** dados de forma prática e interativa.
+
+Basta rodar o `aplicacao_completa.py` para utilizar o validador de dados. O usuário pode fazer o upload de um dataset e a aplicação retornará, de forma clara, se há erros ou não no arquivo, além de exportar apenas os dados válidos.
+
+O script `main.py` utiliza o `ydata_profiling` para gerar automaticamente um arquivo `.html` com uma análise exploratória detalhada do dataset configurado no código.
+
+Já o `app_dashboard.py` é uma aplicação `Streamlit` que permite carregar dados e exibe uma análise rápida com gráficos e indicadores importantes sobre o dataset fornecido.
 
 ---
 
