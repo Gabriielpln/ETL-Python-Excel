@@ -1,8 +1,24 @@
 
-# 🧪 Validador de Dados com Análise Exploratória e Insights Rápidos 
-
+# 🧪 ETL-Python-Excel
+### Validador de Dados com Análise Exploratória e Insights Rápidos
 Este projeto implementa um processo ETL com foco em análise de dados a partir de planilhas Excel (CSV). São utilizados `Python`, `Pandas`, `Pydantic`, `Streamlit` e `YData Profiling` para construir uma solução completa que **valida**, **analisa** e **visualiza** dados de forma prática e interativa.
 
+## 🔄 Processo ETL
+
+**🔹 Extract (Extração)**  
+Os dados são extraídos de arquivos CSV, como `data.csv` e `data_teste_erros.csv`, que são carregados para análise e validação. Essa é a etapa de obtenção das informações de uma fonte externa.
+
+**🔹 Transform (Transformação)**  
+A transformação acontece principalmente no arquivo `validador.py`, onde os dados passam por validação com o modelo `planilha_vendas` da biblioteca `Pydantic`. Essa etapa garante que os dados estejam no formato correto e atendam a critérios definidos, como:    
+- campos obrigatórios preenchidos  
+- tipos de dados coerentes
+- colunas não esperadas ou ausentes
+
+**🔹 Load (Carregamento)**  
+Após a validação:
+- Os dados válidos são exportados para um novo arquivo CSV (`dados_validados.csv`)  
+- Um relatório exploratório em HTML (`output.html`) pode ser gerado pelo `main.py` usando `ProfileReport`  
+- Dashboards interativos são criados com `Streamlit` via `app_dashboard.py` para facilitar a visualização das métricas
 
 Basta rodar o `aplicacao_completa.py` para utilizar o validador de dados. O usuário pode fazer o upload de um dataset e a aplicação retornará, de forma clara, se há erros ou não no arquivo, além de exportar apenas os dados válidos.
 
@@ -59,7 +75,18 @@ __pycache__/
 
 ## 🧪 Como Usar
 
-### 1. Análise Exploratória (`main.py`)
+### 1. Validação de Dados com Pydantic (`aplicacao_completa.py`)
+```bash
+streamlit run src/aplicacao_completa.py
+```
+
+- Permite o upload de um arquivo CSV  
+- Realiza validação linha a linha com feedback detalhado  
+- Exporta apenas os dados válidos para `dados_validados.csv`
+
+---
+
+### 2. Análise Exploratória (`main.py`)
 
 ```bash
 python main.py
@@ -69,7 +96,7 @@ Gera o arquivo `output.html` com uma análise exploratória do arquivo `data.csv
 
 ---
 
-### 2. Dashboard com KPIs (`app_dashboard.py`)
+### 3. Dashboard com KPIs (`app_dashboard.py`)
 
 ```bash
 streamlit run app_dashboard.py
@@ -77,17 +104,6 @@ streamlit run app_dashboard.py
 
 - Permite o upload de um arquivo CSV  
 - Exibe KPIs e gráficos interativos: Gasto, CTR, CPA, CPM, entre outros
-
----
-
-### 3. Validação de Dados com Pydantic (`aplicacao_completa.py`)
-```bash
-streamlit run aplicacao_completa.py
-```
-
-- Permite o upload de um arquivo CSV  
-- Realiza validação linha a linha com feedback detalhado  
-- Exporta apenas os dados válidos para `dados_validados.csv`
 
 ---
 
@@ -147,5 +163,3 @@ Colunas do CSV esperadas pelo validador
 Este projeto foi desenvolvido como parte de um curso/laboratório prático. O objetivo é reforçar o aprendizado de ferramentas de análise, validação e visualização de dados em Python.
 
 ---
-
-🔹 Projeto desenvolvido durante uma live prática com foco educacional
