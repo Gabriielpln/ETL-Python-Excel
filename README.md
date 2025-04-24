@@ -1,7 +1,8 @@
 
-# 🧪 Projeto ETL com Validação de Dados e Dashboard Interativo
+# 🧪 Validador de Dados com Análise Exploratória e Insights Rápidos 
 
 Este projeto implementa um processo ETL com foco em análise de dados a partir de planilhas Excel (CSV). São utilizados `Python`, `Pandas`, `Pydantic`, `Streamlit` e `YData Profiling` para construir uma solução completa que **valida**, **analisa** e **visualiza** dados de forma prática e interativa.
+
 
 Basta rodar o `aplicacao_completa.py` para utilizar o validador de dados. O usuário pode fazer o upload de um dataset e a aplicação retornará, de forma clara, se há erros ou não no arquivo, além de exportar apenas os dados válidos.
 
@@ -80,7 +81,6 @@ streamlit run app_dashboard.py
 ---
 
 ### 3. Validação de Dados com Pydantic (`aplicacao_completa.py`)
-
 ```bash
 streamlit run aplicacao_completa.py
 ```
@@ -92,29 +92,32 @@ streamlit run aplicacao_completa.py
 ---
 
 ## ✅ Validador de Dados – Exemplo de Modelo
-
+O script `validador.py` define um modelo de validação utilizando `Pydantic`, onde é possível configurar como cada dado deverá ser aceito. Por exemplo: campos que devem conter apenas inteiros, valores float, strings com opções específicas, campos opcionais, entre outros. Esse modelo é usado para garantir a consistência dos dados antes de qualquer análise ou visualização.
 ```python
 class planilha_vendas(BaseModel):
-    Organizador: int
-    Ano_Mes: str
-    Dia_da_Semana: str
-    Tipo_Dia: str
-    Objetivo: str
-    Date: str
-    AdSet_name: Optional[str]
-    Amount_spent: float
-    Link_clicks: Optional[float]
-    Impressions: Optional[float]
-    Conversions: Optional[float]
-    Segmentação: str
-    Tipo_de_Anúncio: str
-    Fase: str
+    Organizador: int = Field(..., description="Identificador do Organizador")
+    Ano_Mes: str = Field(..., description="Ano e mês no formato")
+    Dia_da_Semana: Literal["Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado", "Domingo"] = Field(..., description="Classificação do dia da semana.")
+    Tipo_Dia: Literal["Dia útil", "Feriado", "Final de Semana"] = Field(..., description="Classificação do dia: útil, feriado, etc.")
+    Objetivo: str = Field(..., description="Objetivo da campaha ou ação")
+    Date: date = Field(..., description="Data da entrada no formato YYYY-MM-DD")
+    AdSet_name: Optional[str] = Field(description="Nome do conjunto de anúncios")
+    Amount_spent: float = Field(0.0, ge=0, le=1200.00, description="Valor gasto no anúncio (mínimo 0, máximo 589.96")
+    Link_clicks: Optional[float] = Field(None, description="Número de cliques no link", nullable=True)
+    Impressions: Optional[int] = Field(0, description="Número de impressões do anúncio", nullable=True)
+    Conversions: Optional[float] = Field(None, description="Número de conversões", nullable=True)
+    Segmentação: str = Field(None, description="Segmentação usada")
+    Tipo_de_Anúncio: str = Field(..., description="Tipo de anúncio")
+    Fase: str = Field(..., description="Fase do funil de vendas")
+
+    class Config:
+        validate_default: True
 ```
 
 ---
 
 ## 📌 Colunas Esperadas no CSV
-
+Colunas do CSV esperadas pelo validador
 ```python
 {
     "Organizador", "Ano_Mes", "Dia_da_Semana", "Tipo_Dia", "Objetivo",
