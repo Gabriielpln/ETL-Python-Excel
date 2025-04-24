@@ -19,6 +19,10 @@ Após a validação:
 - Os dados válidos são exportados para um novo arquivo CSV (`dados_validados.csv`)  
 - Um relatório exploratório em HTML (`output.html`) pode ser gerado pelo `main.py` usando `ProfileReport`  
 - Dashboards interativos são criados com `Streamlit` via `app_dashboard.py` para facilitar a visualização das métricas
+  
+---
+
+## 📝 Resumo
 
 Basta rodar o `aplicacao_completa.py` para utilizar o validador de dados. O usuário pode fazer o upload de um dataset e a aplicação retornará, de forma clara, se há erros ou não no arquivo, além de exportar apenas os dados válidos.
 
