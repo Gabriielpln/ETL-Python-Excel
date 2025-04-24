@@ -19,4 +19,4 @@ class planilha_vendas(BaseModel):
     Fase: str = Field(..., description="Fase do funil de vendas")
 
     class Config:
-        validate_default: True # Garante que os valores padrão sejam validados automaticamente
+        validate_default: True # Garante que valores padrão sejam validados automaticamente

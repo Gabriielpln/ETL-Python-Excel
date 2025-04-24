@@ -9,7 +9,7 @@ colunas_esperadas = {
     "Organizador", "Ano_Mes", "Dia_da_Semana", "Tipo_Dia", "Objetivo",
     "Date", "AdSet_name", "Amount_spent", "Link_clicks", "Impressions",
     "Conversions", "Segmentação", "Tipo_de_Anúncio", "Fase"
-}
+} 
 
 
 def validador_dados(df):
